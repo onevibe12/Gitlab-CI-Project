@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: app-flask
+    tier: frontend
+  name: app-flask
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app-flask
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: app-flask
+    spec:
+      containers:
+      - image: onevibe12/python-flask:1
+        name: python-flask
+        command: ['/bin/sh', '-c', 'python app.py']
+        ports:
+        - containerPort: 5000
+        resources: {}
+status: {}
